@@ -79,5 +79,36 @@ void Imagen(){
 }
 
 void Publik() {
-
+    int led, res, size, time, cont=1, T=4;
+    cout << "Ingrese la cantidad de patrones a ingresar: ";
+    cin >> size;
+    cout << "Ingrese tiempo: ";
+    cin >> time;
+    int ***M = new int**[size]{};
+    for (int i=0; i<size; i++) {
+        M[i] = new int*[T];
+        for (int j=0; j<T; j++) {
+            M[i][j] = new int[T];
+            cin >> led;
+            for (int k=0; k<T; k++) {
+                res = led%10;
+                led = led/10;
+                M[i][j][k] = res;
+            }
+        }
+        cout << endl;
+    }
+    cout << endl;
+    for (int t=0; t<time; t++) {
+        for (int i=0; i<size; i++) {
+            for (int j=0; j<T; j++) {
+                for (int k=T-1; k>=0; k--) {
+                    cout << M[i][j][k] << " ";
+                }
+                cout << endl;
+            }
+            cout << endl << cont++ << " segundos xd" << endl << endl;
+        }
+    }
+    delete[] M;
 }
